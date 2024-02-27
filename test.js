@@ -1,4 +1,4 @@
-import {test} from "brittle";
+import {test, solo} from "brittle";
 import {getSpot} from "./index.js";
 
 ///////////// Put all tests below other tests as their position in code
@@ -52,3 +52,12 @@ test("invalid input, offset defaults to 1", t => {
         someFunction(x);
     }
 });
+
+test("Get spot from actual error", t => {
+    const e = new Error();
+    const {line, column, file, callee} = getSpot(e);
+    t.is(line, 57);
+    t.is(column, 15);
+    t.ok(file.endsWith("test.js"));
+    t.is(callee, "", "");
+})

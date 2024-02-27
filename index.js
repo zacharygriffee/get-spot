@@ -1,9 +1,14 @@
 function getSpot(offset = 1) {
-    let input = new Error().stack;
+    if (offset instanceof Error || offset?.message) {
+        return getErrorSpot(offset);
+    }
     offset = Math.max(offset, 1);
     if (offset !== offset) offset = 1;
-    input = rawParse(input).slice(offset).map(x => extractEntryMetadata(x))
-    return input;
+    return rawParse(new Error().stack).slice(offset).map(x => extractEntryMetadata(x));
+}
+
+function getErrorSpot(error) {
+    return extractEntryMetadata([rawParse(error.stack)[0]])[0];
 }
 
 function extractEntryMetadata(e) {
@@ -13,9 +18,7 @@ function extractEntryMetadata(e) {
 }
 
 function rawParse(str) {
-    const lines = (str || '').split('\n')
-
-    const entries = lines.map(line => {
+    const entries = str.split('\n').map(line => {
 
         line = line.trim()
 

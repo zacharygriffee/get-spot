@@ -11,9 +11,18 @@ the option to specify an offset.
 
 > import { getSpot } from "get-spot";
 
-## `[...stack] = getSpot(offset = 1)`
+---
+## Two overloads
+
+## #1 `[...stack] = getSpot(offset = 1)`
 
 `offset`: must be 1 or greater
+
+## #2 `topMostStackItem = getSpot(error)`
+
+`error` An error that is an instance of `Error` or an object with message, i.e. error.message
+
+---
 
 Stack will have the following information
 
