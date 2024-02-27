@@ -1,0 +1,23 @@
+{
+  "name": "get-spot",
+  "version": "1.0.0",
+  "description": "Line number, column number, filename",
+  "main": "index.js",
+  "browser": "dist/index.min.js",
+  "scripts": {
+    "coverage": "c8 npm run test",
+    "test": "node ./test.js",
+    "bundle": "node ./bundle.js"
+  },
+  "author": "Zachary Eric Griffee",
+  "license": "MIT",
+  "type": "module",
+  "homepage": "https://github.com/zacharygriffee/senal#readme",
+  "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.4",
+    "b4a": "^1.6.6",
+    "brittle": "^3.4.0",
+    "jsdoc-to-markdown": "^8.0.1",
+    "localdrive": "^1.11.4"
+  }
+}
